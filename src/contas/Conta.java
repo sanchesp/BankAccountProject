@@ -1,6 +1,7 @@
 package contas;
 
 import acessos.Acesso;
+import cliente.Cliente;
 
 import java.math.BigDecimal;
 
@@ -10,11 +11,11 @@ public class Conta {
     protected Long numeroConta;
     protected Integer agencia;
     protected BigDecimal saldo;
-    protected Acesso status;
+
 
 
     public Conta(Enum<TipoConta> tipoConta, Long numeroConta, Integer agencia) {
-           this.setTipoConta(tipoConta);
+        this.setTipoConta(tipoConta);
         this.setNumeroConta(numeroConta);
         this.setAgencia(agencia);
         this.setSaldo(BigDecimal.ZERO);
@@ -51,11 +52,11 @@ public class Conta {
         this.saldo = saldo;
     }
 
-
     public BigDecimal deposita(BigDecimal valor) {
         this.saldo = this.saldo.add(valor);
         return this.saldo;
     }
+
     public BigDecimal saque(BigDecimal valor) {
         this.saldo = this.saldo.subtract(valor);
         return this.saldo;

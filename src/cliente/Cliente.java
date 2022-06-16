@@ -2,6 +2,7 @@ package cliente;
 
 import contas.Conta;
 import acessos.Acesso;
+import contas.TipoConta;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,15 +13,14 @@ public class Cliente  {
     protected Long rg;
     protected LocalDate dataNascimento;
     protected Long cpf;
-    protected Conta conta;
-    protected ArrayList<Conta> minhasContas;
+    protected ArrayList<Conta> contas;
     protected Acesso acessoCliente;
     public Cliente(String nome, Long rg, LocalDate dataNascimento, Long cpf) {
-        this.setNome(nome);
-        this.setRg(rg);
-        this.setDataNascimento(dataNascimento);
-        this.setCpf(cpf);
-        this.setMinhasContas(new ArrayList());
+        this.nome = nome;
+        this.rg = rg;
+        this.dataNascimento = dataNascimento;
+        this.cpf = cpf;
+        this.contas = new ArrayList();
     }
     public Long getCpf() {
         return cpf;
@@ -53,12 +53,12 @@ public class Cliente  {
         this.dataNascimento = dataNascimento;
     }
 
-    public ArrayList<Conta> getMinhasContas() {
-        return minhasContas;
+    public ArrayList<Conta> getContas() {
+        return contas;
     }
 
-    public void setMinhasContas(ArrayList<Conta> minhasContas) {
-        this.minhasContas = minhasContas;
+    public void setContas(Conta conta) {
+        this.contas.add(conta);
     }
     public Acesso getAcessoCliente() {
         return acessoCliente;
@@ -67,21 +67,4 @@ public class Cliente  {
     public void setAcessoCliente(Acesso acessoCliente) {
         this.acessoCliente = acessoCliente;
     }
-    public Conta getConta() {
-        return conta;
-    }
-
-    public void setConta(Conta conta) {
-        this.conta = conta;
-    }
-    public void criarAcesso (Long usuario, Long senha){
-        this.acessoCliente.setUsuario(usuario);
-        this.acessoCliente.setSenha(senha);
-    }
-    public void criarConta (Long numeroConta, Integer agencia) {
-        this.conta.setNumeroConta(numeroConta);
-        this.conta.setAgencia(agencia);
-        }
-
-
 }
